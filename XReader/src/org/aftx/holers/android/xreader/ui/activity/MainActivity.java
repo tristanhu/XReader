@@ -7,6 +7,8 @@ import org.aftx.holers.android.xreader.ui.dialog.AddBookDialog;
 import org.aftx.holers.android.xreader.ui.dialog.AddCollectionDialog;
 import org.aftx.holers.android.xreader.ui.dialog.DelCollectionDialog;
 
+import com.google.inject.Singleton;
+
 import roboguice.inject.ContentView;
 
 import android.app.ActionBar;
@@ -17,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 
+@Singleton
 @ContentView(R.layout.activity_main)
 public class MainActivity extends BaseMainActivity {
 
