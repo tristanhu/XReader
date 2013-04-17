@@ -2,13 +2,11 @@ package org.aftx.holers.android.xreader.ui.fragment;
 
 import org.aftx.holers.android.xreader.R;
 import org.aftx.holers.android.xreader.db.model.Book;
-import org.aftx.holers.android.xreader.ui.activity.MainActivity;
 import org.aftx.holers.android.xreader.ui.activity.ReadActivity;
 import org.aftx.holers.android.xreader.ui.utils.BookList;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;

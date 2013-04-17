@@ -12,7 +12,7 @@ import org.aftx.holers.android.xreader.rss.data.RssItem;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import android.app.ListActivity;
+import roboguice.activity.RoboListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,7 +25,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-public class RSSActivity extends ListActivity {
+public class RSSActivity extends RoboListActivity {
 	private static String strUrl = "http://rss.sina.com.cn/ent/hot_roll.xml";
 
 	private static final int Rss_Item1 = Menu.FIRST;
@@ -128,7 +128,7 @@ public class RSSActivity extends ListActivity {
 		Intent intent = null;
 		switch (item.getItemId()) {
 		case Rss_Item1:
-			intent = new Intent(RSSActivity.this, RSSList.class);
+			intent = new Intent(RSSActivity.this, RssListActivity.class);
 			startActivityForResult(intent, 0);
 			break;
 		default:

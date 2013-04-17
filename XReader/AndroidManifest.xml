@@ -33,7 +33,7 @@
         </activity>
         <activity android:name="org.aftx.holers.android.xreader.rss.RSSActivity" >
         </activity>
-        <activity android:name="org.aftx.holers.android.xreader.rss.RSSList" >
+        <activity android:name="org.aftx.holers.android.xreader.rss.RssListActivity" >
         </activity>
         <activity android:name="org.aftx.holers.android.xreader.rss.RSS_listItem" >
         </activity>

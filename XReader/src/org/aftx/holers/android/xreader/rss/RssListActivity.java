@@ -2,7 +2,7 @@ package org.aftx.holers.android.xreader.rss;
 
 import org.aftx.holers.android.xreader.R;
 
-import android.app.ListActivity;
+import roboguice.activity.RoboListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -15,7 +15,7 @@ import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-public class RSSList extends ListActivity {
+public class RssListActivity extends RoboListActivity {
 	private static final int Menu_item1 = Menu.FIRST;
 	private static final int Menu_item2 = Menu_item1 + 1;
 	private static final int Menu_item3 = Menu_item2 + 1;
@@ -89,14 +89,14 @@ public class RSSList extends ListActivity {
 		switch (item.getItemId()) {
 		case Menu_item1:
 			// 新添加一个标题
-			intent = new Intent(RSSList.this, RSS_listItem.class);
+			intent = new Intent(RssListActivity.this, RSS_listItem.class);
 			intent.setAction("com.lq.addlistitem");
 			startActivity(intent);
 			break;
 		case Menu_item2:
 			// 编辑当前所选标题
 			cursor = rManager.selectDate(id);
-			intent = new Intent(RSSList.this, RSS_listItem.class);
+			intent = new Intent(RssListActivity.this, RSS_listItem.class);
 			Bundle bundle = new Bundle();
 			bundle.putInt(RSS_mlist._ID, cursor.getInt(0));
 			bundle.putString(RSS_mlist.title, cursor.getString(1));

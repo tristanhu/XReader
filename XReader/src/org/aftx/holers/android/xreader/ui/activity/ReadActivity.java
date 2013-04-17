@@ -3,12 +3,8 @@ package org.aftx.holers.android.xreader.ui.activity;
 import org.aftx.holers.android.xreader.R;
 import org.aftx.holers.android.xreader.db.model.Book;
 import org.aftx.holers.android.xreader.db.model.History;
-import org.aftx.holers.android.xreader.service.fake.LogLayer;
 import org.aftx.holers.android.xreader.ui.activity.base.BaseReadActivity;
 import org.aftx.holers.android.xreader.ui.adapter.SectionsPagerAdapter;
-import org.aftx.holers.android.xreader.ui.handler.UiHandler;
-import org.aftx.holers.android.xreader.ui.utils.BookList;
-import org.aftx.holers.android.xreader.ui.utils.CollectionList;
 import org.aftx.holers.android.xreader.ui.utils.HistoryList;
 
 import android.app.ActionBar;

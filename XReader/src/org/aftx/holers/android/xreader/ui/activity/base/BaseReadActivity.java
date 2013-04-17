@@ -3,22 +3,21 @@ package org.aftx.holers.android.xreader.ui.activity.base;
 import org.aftx.holers.android.xreader.service.binder.LogBinder;
 import org.aftx.holers.android.xreader.service.conn.ISetBinder;
 import org.aftx.holers.android.xreader.service.fake.LogLayer;
-import org.aftx.holers.android.xreader.ui.handler.UiHandler;
 import org.aftx.holers.android.xreader.ui.utils.BaseList;
 import org.aftx.holers.android.xreader.ui.utils.BookList;
 import org.aftx.holers.android.xreader.ui.utils.CollectionList;
 import org.aftx.holers.android.xreader.ui.utils.HistoryList;
 
+import roboguice.activity.RoboFragmentActivity;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
-public class BaseReadActivity extends FragmentActivity implements
+public class BaseReadActivity extends RoboFragmentActivity implements
         ActionBar.TabListener, ISetBinder {
 
     protected BaseList<?> bookList, collectionList, historyList;
