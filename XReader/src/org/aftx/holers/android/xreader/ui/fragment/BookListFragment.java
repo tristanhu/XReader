@@ -36,18 +36,7 @@ public class BookListFragment extends BaseListFragment {
                 .getMenuInfo();
         switch (item.getItemId()) {
         case 0:
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message msg = new Message();
-                    msg.what = DELBOOK;
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("Id",
-                            ((BookList) list).GetEntity(info.position).getId());
-                    msg.setData(bundle);
-                    ((MainActivity) getActivity()).handler.sendMessage(msg);
-                }
-            }).start();
+            sendDelBook(info.position);
             return false;
         default:
             return super.onContextItemSelected(item);
