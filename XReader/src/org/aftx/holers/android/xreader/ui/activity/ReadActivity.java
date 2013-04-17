@@ -7,14 +7,27 @@ import org.aftx.holers.android.xreader.ui.activity.base.BaseReadActivity;
 import org.aftx.holers.android.xreader.ui.adapter.SectionsPagerAdapter;
 import org.aftx.holers.android.xreader.ui.utils.HistoryList;
 
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectExtra;
+
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
+@ContentView(R.layout.activity_read)
 public class ReadActivity extends BaseReadActivity {
 
     protected Book               book;
+
+    @InjectExtra("Id")
+    private int                  id;
+    @InjectExtra("Name")
+    private String               name;
+    @InjectExtra("Path")
+    private String               path;
+    @InjectExtra("Page")
+    private int                  page;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -29,7 +42,6 @@ public class ReadActivity extends BaseReadActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_read);
 
         // Set up the action bar.
         actionBar = getActionBar();
@@ -42,9 +54,8 @@ public class ReadActivity extends BaseReadActivity {
 
         mSectionsPagerAdapter.setContext(this);
 
-        Bundle bundle = getIntent().getExtras();
-        book = new Book(bundle.getString("Name"), bundle.getString("Path"));
-        book.setId(bundle.getInt("Id"));
+        book = new Book(name, path);
+        book.setId(id);
         mSectionsPagerAdapter.setBook(book);
         setTitle(book.getName());
 
@@ -72,7 +83,7 @@ public class ReadActivity extends BaseReadActivity {
         actionBar.addTab(actionBar.newTab().setText(R.string.title_mark)
                 .setTabListener(this));
 
-        mViewPager.setCurrentItem(bundle.getInt("Page") - 1);
+        mViewPager.setCurrentItem(page - 1);
     }
 
     @Override

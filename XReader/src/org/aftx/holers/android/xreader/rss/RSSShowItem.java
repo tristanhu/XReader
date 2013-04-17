@@ -2,6 +2,8 @@ package org.aftx.holers.android.xreader.rss;
 
 import org.aftx.holers.android.xreader.R;
 
+import roboguice.inject.InjectView;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +13,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class RSSShowItem extends Activity{
+    
+    @InjectView(R.id.txt_content)
 	private TextView txtContent;
+    @InjectView(R.id.btn_back)
 	private Button button;
 	
 	private String title,pubDate,description,link;
@@ -22,8 +27,6 @@ public class RSSShowItem extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rss_list_showitem);
 		
-		txtContent = (TextView)findViewById(R.id.txt_content);
-		button = (Button)findViewById(R.id.btn_back);
 		button.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {

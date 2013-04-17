@@ -7,6 +7,8 @@ import org.aftx.holers.android.xreader.ui.dialog.AddBookDialog;
 import org.aftx.holers.android.xreader.ui.dialog.AddCollectionDialog;
 import org.aftx.holers.android.xreader.ui.dialog.DelCollectionDialog;
 
+import roboguice.inject.ContentView;
+
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,13 +17,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 
+@ContentView(R.layout.activity_main)
 public class MainActivity extends BaseMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
         // Set up the action bar to show a dropdown list.
         actionBar = getActionBar();
         actionBar.setDisplayShowTitleEnabled(false);

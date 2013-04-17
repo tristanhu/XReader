@@ -6,6 +6,7 @@ import org.aftx.holers.android.xreader.R;
 import org.aftx.holers.android.xreader.ui.utils.FileSearch;
 
 import roboguice.activity.RoboActivity;
+import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 
+@ContentView(R.layout.search)
 public class SearchActivity extends RoboActivity {
 
     @InjectView(R.id.search_result)
@@ -32,7 +34,7 @@ public class SearchActivity extends RoboActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search);
+        
         setTitle(R.string.title_search);
 
         searchBtn.setOnClickListener(new OnClickListener() {

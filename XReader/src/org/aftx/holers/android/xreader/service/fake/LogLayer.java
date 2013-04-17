@@ -6,10 +6,24 @@ import org.aftx.holers.android.xreader.service.binder.LogBinder;
 import android.content.Context;
 import android.os.IBinder;
 
+import com.google.inject.Inject;
+import com.google.inject.Provides;
+
 public class LogLayer {
-    private DbBinder         dbBinder = null;
-    private LogBinder        binder   = null;
-    private DbLayer          db;
+    //@Provides
+    //@ProvideDbLayer
+    private DbLayer provideDbLayer() {
+        return new DbLayer(context);
+    }
+
+    private Context   context;
+
+    private DbBinder  dbBinder = null;
+    private LogBinder binder   = null;
+
+    //@Inject
+    //@ProvideDbLayer
+    private DbLayer   db;
 
     public void setBinder(IBinder binder) {
         dbBinder = (DbBinder) binder;
@@ -20,6 +34,7 @@ public class LogLayer {
     }
 
     public LogLayer(Context context) {
+        this.context = context;
         db = new DbLayer(context);
         setBinder(db.GetBind());
         binder = new LogBinder(dbBinder);

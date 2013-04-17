@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 public class RssListActivity extends RoboListActivity {
+    
 	private static final int Menu_item1 = Menu.FIRST;
 	private static final int Menu_item2 = Menu_item1 + 1;
 	private static final int Menu_item3 = Menu_item2 + 1;
