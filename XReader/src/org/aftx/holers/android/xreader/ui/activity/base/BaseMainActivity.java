@@ -11,9 +11,8 @@ import org.aftx.holers.android.xreader.ui.fragment.BaseListFragment;
 import org.aftx.holers.android.xreader.ui.fragment.BookListFragment;
 import org.aftx.holers.android.xreader.ui.fragment.HistoryListFragment;
 import org.aftx.holers.android.xreader.ui.handler.MsgDefine;
-import org.aftx.holers.android.xreader.ui.handler.UiHandler;
-import org.aftx.holers.android.xreader.ui.interfaces.IBookList;
-import org.aftx.holers.android.xreader.ui.interfaces.ICollectionList;
+import org.aftx.holers.android.xreader.ui.interfaces.IBookAction;
+import org.aftx.holers.android.xreader.ui.interfaces.ICollectionAction;
 import org.aftx.holers.android.xreader.ui.utils.BaseList;
 import org.aftx.holers.android.xreader.ui.utils.BookList;
 import org.aftx.holers.android.xreader.ui.utils.CollectionList;
@@ -22,12 +21,13 @@ import org.aftx.holers.android.xreader.ui.utils.HistoryList;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ArrayAdapter;
 
 import com.google.inject.Inject;
 
 public class BaseMainActivity extends BaseActivity implements
-        ActionBar.OnNavigationListener, IBookList, ICollectionList,
+        ActionBar.OnNavigationListener, IBookAction, ICollectionAction,
         MsgDefine {
 
     /**
@@ -123,7 +123,9 @@ public class BaseMainActivity extends BaseActivity implements
         dialog.dismiss();
     }
 
-    public UiHandler handler;
+    @Inject
+    @GetHandler
+    public Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,8 +137,6 @@ public class BaseMainActivity extends BaseActivity implements
         // while (binder == null) {
         // }
         // logic = new LogLayer(this);
-
-        handler = new UiHandler(this, this);
     }
 
     @Override

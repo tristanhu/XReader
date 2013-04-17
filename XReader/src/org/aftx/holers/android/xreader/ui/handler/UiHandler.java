@@ -1,19 +1,24 @@
 package org.aftx.holers.android.xreader.ui.handler;
 
-import org.aftx.holers.android.xreader.ui.interfaces.IBookList;
-import org.aftx.holers.android.xreader.ui.interfaces.ICollectionList;
+import org.aftx.holers.android.xreader.ui.interfaces.GetIBookAction;
+import org.aftx.holers.android.xreader.ui.interfaces.GetICollectionAction;
+import org.aftx.holers.android.xreader.ui.interfaces.IBookAction;
+import org.aftx.holers.android.xreader.ui.interfaces.ICollectionAction;
 
 import android.os.Handler;
 import android.os.Message;
 
-public class UiHandler extends Handler implements MsgDefine {
-    private IBookList       books;
-    private ICollectionList collections;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
-    public UiHandler(IBookList books, ICollectionList collections) {
-        this.books = books;
-        this.collections = collections;
-    }
+@Singleton
+public class UiHandler extends Handler implements MsgDefine {
+    @Inject
+    @GetIBookAction
+    private IBookAction       books;
+    @Inject
+    @GetICollectionAction
+    private ICollectionAction collections;
 
     public void handleMessage(Message msg) {
         String name;
