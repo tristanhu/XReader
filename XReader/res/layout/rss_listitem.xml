@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:gravity="center_vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:padding="10px">
+	<TextView android:id="@+id/txt_title"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/rss_title"/>
+	<EditText android:id="@+id/edit_title"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/txt_title"
+		android:singleLine="true"/>
+	<TextView android:id="@+id/txt_link"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/edit_title"
+		android:text="@string/rss_link"/>
+	<EditText android:id="@+id/edit_link"
+		android:layout_width="fill_parent"
+		android:layout_height="100dip"
+		android:layout_below="@id/txt_link"
+		android:singleLine="true"/>
+	<Button android:id="@+id/b_submit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/edit_link"
+		android:text="@string/rss_submit"/>
+</RelativeLayout>

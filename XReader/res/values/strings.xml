@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">XReader</string>
+    <string name="title_add_book">添加书籍</string>
+    <string name="title_del_book">删除书籍</string>
+    <string name="title_add_collection">添加收藏集</string>
+    <string name="title_del_collection">删除收藏集</string>
+    <string name="title_rss">RSS阅读</string>
+    <string name="action_settings">设置</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="hint_add_collection">输入目录名字</string>
+    <string name="title_read">阅读</string>
+    <string name="title_mark">书签</string>
+    <string name="title_history">历史</string>
+    <string name="title_search">搜索</string>
+    <string name="rss_item1">Rss列表管理</string>
+    <string name="rss_item3">主题添加</string>
+    <string name="rss_item4">编辑</string>
+    <string name="rss_item5">删除</string>
+    <string name="rss_title">标题：</string>
+    <string name="rss_link">地址：</string>
+    <string name="rss_submit">确定</string>
+
+</resources>

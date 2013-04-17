@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/AddBook"
+        android:title="@string/title_add_book">
+    </item>
+    <item
+        android:id="@+id/AddCollection"
+        android:title="@string/title_add_collection">
+    </item>
+    <item
+        android:id="@+id/DelCollection"
+        android:title="@string/title_del_collection">
+    </item>
+    <item
+        android:id="@+id/Search"
+        android:title="@string/title_search">
+    </item>
+    <item
+        android:id="@+id/Rss"
+        android:title="@string/title_rss">
+    </item>
+
+</menu>
