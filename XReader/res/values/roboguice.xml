@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="roboguice_modules">
+        <item>org.aftx.holers.android.xreader.db.BindModule</item>
+        <item>org.aftx.holers.android.xreader.service.binder.BindModule</item>
+        <item>org.aftx.holers.android.xreader.service.fake.BindModule</item>
+        <item>org.aftx.holers.android.xreader.ui.activity.BindModule</item>
+        <item>org.aftx.holers.android.xreader.ui.utils.BindModule</item>
+    </string-array>
+
+</resources>

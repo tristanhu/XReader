@@ -8,14 +8,17 @@ import org.aftx.holers.android.xreader.db.model.Book;
 import org.aftx.holers.android.xreader.db.model.Collection;
 import org.aftx.holers.android.xreader.db.model.History;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.google.inject.name.Named;
+
 import android.os.Binder;
 
+@Singleton
 public class DbBinder extends Binder {
-    private DbHelper helper = null;
-
-    public DbBinder(DbHelper helper) {
-        this.helper = helper;
-    }
+    @Inject
+    @Named("ProvideDbHelper")
+    private DbHelper helper;
 
     public void AddBook(Book book) {
         try {

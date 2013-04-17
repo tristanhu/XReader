@@ -6,7 +6,6 @@ import org.aftx.holers.android.xreader.R;
 import org.aftx.holers.android.xreader.db.model.Book;
 import org.aftx.holers.android.xreader.db.model.Collection;
 import org.aftx.holers.android.xreader.service.binder.LogBinder;
-import org.aftx.holers.android.xreader.service.conn.ISetBinder;
 import org.aftx.holers.android.xreader.service.fake.LogLayer;
 import org.aftx.holers.android.xreader.ui.fragment.BaseListFragment;
 import org.aftx.holers.android.xreader.ui.fragment.BookListFragment;
@@ -20,16 +19,15 @@ import org.aftx.holers.android.xreader.ui.utils.BookList;
 import org.aftx.holers.android.xreader.ui.utils.CollectionList;
 import org.aftx.holers.android.xreader.ui.utils.HistoryList;
 
-import roboguice.activity.RoboActivity;
-
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.widget.ArrayAdapter;
 
-public class BaseMainActivity extends RoboActivity implements
-        ActionBar.OnNavigationListener, ISetBinder, IBookList, ICollectionList,
+import com.google.inject.Inject;
+
+public class BaseMainActivity extends BaseActivity implements
+        ActionBar.OnNavigationListener, IBookList, ICollectionList,
         MsgDefine {
 
     /**
@@ -38,17 +36,13 @@ public class BaseMainActivity extends RoboActivity implements
      */
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 
-    protected BaseList<?>       bookList, collectionList, historyList;
-
     protected ActionBar         actionBar;
 
-    protected LogLayer          logic;
-    protected LogBinder         binder;
-
-    @Override
-    public void setBinder(IBinder binder) {
-        this.binder = (LogBinder) binder;
-    }
+    @Inject
+    protected LogLayer  logic;
+    
+    @Inject
+    protected LogBinder binder;
 
     @Override
     public void AddBook(String name, String path) {
@@ -82,7 +76,7 @@ public class BaseMainActivity extends RoboActivity implements
             getFragmentManager().beginTransaction().replace(R.id.container, ft)
                     .commit();
         } else {
-            ((HistoryList)historyList).Update();
+            ((HistoryList) historyList).Update();
             ft = new HistoryListFragment();
             ft.setList((BaseList<?>) historyList);
             getFragmentManager().beginTransaction().replace(R.id.container, ft)
@@ -140,14 +134,8 @@ public class BaseMainActivity extends RoboActivity implements
         // bindService(service, conn, BIND_AUTO_CREATE);
         // while (binder == null) {
         // }
-        logic = new LogLayer(this);
-        setBinder(logic.GetBind());
-        bookList = new BookList();
-        bookList.setBinder(binder);
-        collectionList = new CollectionList();
-        collectionList.setBinder(binder);
-        historyList = new HistoryList();
-        historyList.setBinder(binder);
+        // logic = new LogLayer(this);
+
         handler = new UiHandler(this, this);
     }
 

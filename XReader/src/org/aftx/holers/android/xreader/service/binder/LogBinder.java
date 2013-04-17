@@ -8,12 +8,13 @@ import org.aftx.holers.android.xreader.db.model.History;
 
 import android.os.Binder;
 
-public class LogBinder extends Binder {
-    private DbBinder binder = null;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
-    public LogBinder(DbBinder binder) {
-        this.binder = binder;
-    }
+@Singleton
+public class LogBinder extends Binder {
+    @Inject
+    private DbBinder binder;
 
     public void AddBook(Book book) {
         binder.AddBook(book);

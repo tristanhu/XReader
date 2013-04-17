@@ -1,17 +1,26 @@
 package org.aftx.holers.android.xreader.service;
 
 import org.aftx.holers.android.xreader.db.DbHelper;
-import org.aftx.holers.android.xreader.service.binder.DbBinder;
+import org.aftx.holers.android.xreader.service.binder.GetDbBinder;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import com.google.inject.name.Named;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
+@Singleton
 public class DbService extends Service {
-    private IBinder  binder = null;
-    private DbHelper helper = null;
+    @Inject
+    @Named("ProvideDbHelper")
+    private DbHelper helper ;
+    
+    @Inject
+    @GetDbBinder
+    private IBinder  binder ;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -21,8 +30,6 @@ public class DbService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        helper = OpenHelperManager.getHelper(this, DbHelper.class);
-        binder = new DbBinder(helper);
     }
 
     @Override

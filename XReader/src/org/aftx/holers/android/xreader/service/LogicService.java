@@ -2,8 +2,8 @@ package org.aftx.holers.android.xreader.service;
 
 import org.aftx.holers.android.xreader.intent.Action;
 import org.aftx.holers.android.xreader.service.binder.DbBinder;
-import org.aftx.holers.android.xreader.service.binder.LogBinder;
-import org.aftx.holers.android.xreader.service.conn.ISetBinder;
+import org.aftx.holers.android.xreader.service.binder.GetDbBinder;
+import org.aftx.holers.android.xreader.service.binder.GetLogBinder;
 import org.aftx.holers.android.xreader.service.conn.SvrConn;
 
 import android.app.Service;
@@ -11,15 +11,20 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
-public class LogicService extends Service implements Action, ISetBinder {
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
-    public ServiceConnection Conn     = null;
-    private DbBinder         dbBinder = null;
-    private LogBinder        binder   = null;
+@Singleton
+public class LogicService extends Service implements Action {
+    @Inject
+    @GetDbBinder
+    private DbBinder         dbBinder ;
 
-    public void setBinder(IBinder binder) {
-        dbBinder = (DbBinder) binder;
-    }
+    @Inject
+    @GetLogBinder
+    private IBinder          binder;
+    
+    public ServiceConnection conn     = null;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -31,11 +36,8 @@ public class LogicService extends Service implements Action, ISetBinder {
         super.onCreate();
         Intent service = new Intent();
         service.setAction(DBSERVICE_ACTION);
-        Conn = new SvrConn(this);
-        bindService(service, Conn, BIND_AUTO_CREATE);
-        binder = new LogBinder(dbBinder);
-        while (dbBinder == null) {
-        }
+        conn = new SvrConn();
+        bindService(service, conn, BIND_AUTO_CREATE);
     }
 
     @Override

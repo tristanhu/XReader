@@ -4,18 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.aftx.holers.android.xreader.service.binder.LogBinder;
-import org.aftx.holers.android.xreader.service.conn.ISetBinder;
 
-import android.os.IBinder;
 import android.util.SparseArray;
 
-public class BaseList<T> implements ISetBinder {
-    protected LogBinder binder;
+import com.google.inject.Inject;
 
-    @Override
-    public void setBinder(IBinder binder) {
-        this.binder = (LogBinder) binder;
-    }
+public class BaseList<T> {
+
+    @Inject
+    protected LogBinder      binder;
 
     protected List<T>        entities;
     protected List<String>   names;
@@ -28,9 +25,8 @@ public class BaseList<T> implements ISetBinder {
     public int GetItemIndex(T entity) {
         return map.indexOfValue(entity);
     }
-    
-    public void Update()
-    {
+
+    public void Update() {
         names = new ArrayList<String>();
         map = new SparseArray<T>();
     }
