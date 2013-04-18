@@ -3,17 +3,9 @@ package org.aftx.holers.android.xreader.db.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.aftx.holers.android.xreader.db.DbHelper;
 import org.aftx.holers.android.xreader.db.model.Book;
 
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
-
-public class BookDao {
-    @Inject
-    @Named("ProvideDbHelper")
-    private DbHelper helper;
-    
+public class BookDao extends BaseDao {
     public void AddBook(Book book) {
         try {
             helper.Books().create(book);
