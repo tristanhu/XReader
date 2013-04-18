@@ -30,12 +30,12 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         entities = new ArrayList<Class<?>>();
-        PackageEx pack = new PackageEx(this.getClass().getPackage().getName()
-                + ".model");
-        List<Class<?>> clazzs = pack.getClassInPackage();
-        for (Class<?> clazz : clazzs) {
-            entities.add(clazz);
-        }
+//        PackageEx pack = new PackageEx(this.getClass().getPackage().getName()
+//                + ".model");
+//        List<Class<?>> clazzs = pack.getClassInPackage();
+//        for (Class<?> clazz : clazzs) {
+//            entities.add(clazz);
+//        }
         entities.add(Book.class);
         entities.add(Collection.class);
         entities.add(History.class);
