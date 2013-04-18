@@ -26,6 +26,7 @@ public class BaseListFragment extends Fragment implements MsgDefine {
                 bundle.putInt("Id", ((BookList) list).GetEntity(pos).getId());
                 msg.setData(bundle);
                 ((MainActivity) getActivity()).handler.sendMessage(msg);
+                ((MainActivity) getActivity()).UpdateBookList();
             }
         }).start();
     }

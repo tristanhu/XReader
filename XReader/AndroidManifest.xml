@@ -31,13 +31,13 @@
             android:name="org.aftx.holers.android.xreader.ui.activity.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
-        <activity android:name="org.aftx.holers.android.xreader.rss.RSSActivity" >
+        <activity android:name="org.aftx.holers.android.xreader.rss.RssActivity" >
         </activity>
         <activity android:name="org.aftx.holers.android.xreader.rss.RssListActivity" >
         </activity>
         <activity android:name="org.aftx.holers.android.xreader.rss.RSS_listItem" >
         </activity>
-        <activity android:name="org.aftx.holers.android.xreader.rss.RSSShowItem" >
+        <activity android:name="org.aftx.holers.android.xreader.rss.RssShowItem" >
         </activity>
         <activity android:name=".ui.activity.SearchActivity" >
         </activity>

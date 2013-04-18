@@ -25,7 +25,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-public class RSSActivity extends RoboListActivity {
+public class RssActivity extends RoboListActivity {
 	private static String strUrl = "http://rss.sina.com.cn/ent/hot_roll.xml";
 
 	private static final int Rss_Item1 = Menu.FIRST;
@@ -100,7 +100,7 @@ public class RSSActivity extends RoboListActivity {
 			System.out.println(strUrl);
 			Message msg = new Message();
 			msg.what = GUIUPDATEIDENTIFIER;
-			RSSActivity.this.myHandler.sendMessage(msg);
+			RssActivity.this.myHandler.sendMessage(msg);
 		}
 	}
 
@@ -128,7 +128,7 @@ public class RSSActivity extends RoboListActivity {
 		Intent intent = null;
 		switch (item.getItemId()) {
 		case Rss_Item1:
-			intent = new Intent(RSSActivity.this, RssListActivity.class);
+			intent = new Intent(RssActivity.this, RssListActivity.class);
 			startActivityForResult(intent, 0);
 			break;
 		default:
@@ -141,7 +141,7 @@ public class RSSActivity extends RoboListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
 		RssItem rItem = rsFeed.getItem(position);
-		Intent intent = new Intent(RSSActivity.this,RSSShowItem.class);
+		Intent intent = new Intent(RssActivity.this,RssShowItem.class);
 		
 		Bundle bundle = new Bundle();
 		bundle.putString("title", rItem.getTitle());

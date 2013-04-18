@@ -7,7 +7,6 @@ import org.aftx.holers.android.xreader.ui.action.ICollectionAction;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-
 @Singleton
 public class Action implements IAction {
     @Inject
@@ -16,8 +15,8 @@ public class Action implements IAction {
     private ICollectionAction collection;
 
     @Override
-    public void AddBook(String name, String path) {
-        book.AddBook(name, path);
+    public void AddBook(String name, String path, int Colleciton) {
+        book.AddBook(name, path, Colleciton);
     }
 
     @Override
@@ -36,8 +35,8 @@ public class Action implements IAction {
     }
 
     @Override
-    public void DelCollection() {
-        collection.DelCollection();
+    public void DelCollection(int id) {
+        collection.DelCollection(id);
     }
 
     @Override

@@ -53,4 +53,10 @@ public class Book {
         this.name = name;
         this.path = path;
     }
+
+    public Book(String name, String path, int collection) {
+        this.name = name;
+        this.path = path;
+        this.collection = collection;
+    }
 }

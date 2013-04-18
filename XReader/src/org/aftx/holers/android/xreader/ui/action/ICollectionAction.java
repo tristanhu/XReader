@@ -8,7 +8,7 @@ import com.google.inject.ImplementedBy;
 public interface ICollectionAction {
     public void AddCollection(String name);
 
-    public void DelCollection();
+    public void DelCollection(int id);
 
     public void UpdateCollectionList();
 }

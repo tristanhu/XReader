@@ -4,10 +4,13 @@ import org.aftx.holers.android.xreader.ui.dialog.base.BaseDialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 
 public class DelCollectionDialog extends BaseDialog {
-    public DelCollectionDialog(Context context, final Handler handler) {
+    public DelCollectionDialog(Context context, final Handler handler,
+            final int id) {
         super(context, handler);
         setTitle("确定删除当前目录？");
         setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -19,7 +22,12 @@ public class DelCollectionDialog extends BaseDialog {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        handler.sendEmptyMessage(DELCOLLECTION);
+                        Bundle data = new Bundle();
+                        data.putInt("Id", id);
+                        Message msg = new Message();
+                        msg.what = DELCOLLECTION;
+                        msg.setData(data);
+                        handler.sendMessage(msg);
                     }
                 }).start();
             }

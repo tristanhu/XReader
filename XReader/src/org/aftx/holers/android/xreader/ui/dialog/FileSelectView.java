@@ -68,14 +68,18 @@ public class FileSelectView extends ListView implements OnItemClickListener,
 
     private AlertDialog dialog;
 
+    private int         collection;
+
     public void setDialog(AlertDialog dialog) {
         this.dialog = dialog;
     }
 
-    public FileSelectView(Context context) {
+    public FileSelectView(Context context, int collection) {
         super(context);
 
         this.currentPath = sRoot;
+
+        this.collection = collection;
 
         this.setOnItemClickListener(this);
         refreshFileList(currentPath);
@@ -125,7 +129,7 @@ public class FileSelectView extends ListView implements OnItemClickListener,
                 map.put("img", getImageId(sFolder));
                 folderList.add(map);
             } else if (file.isFile()) {
-                
+
                 Locale l = Locale.getDefault();
                 // Ìí¼ÓÎÄ¼þ
                 String sf = getSuffix(file.getName()).toLowerCase(l);
@@ -191,8 +195,9 @@ public class FileSelectView extends ListView implements OnItemClickListener,
                 final Message msg = new Message();
                 msg.what = ADDBOOK;
                 Bundle bundle = new Bundle();
-                bundle.putString("name", fn);
-                bundle.putString("path", pt);
+                bundle.putString("Name", fn);
+                bundle.putString("Path", pt);
+                bundle.putInt("Collection", collection);
                 msg.setData(bundle);
                 new Thread(new Runnable() {
                     @Override

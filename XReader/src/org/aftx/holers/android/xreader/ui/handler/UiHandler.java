@@ -2,6 +2,7 @@ package org.aftx.holers.android.xreader.ui.handler;
 
 import org.aftx.holers.android.xreader.ui.action.IAction;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
@@ -11,20 +12,25 @@ import com.google.inject.Singleton;
 @Singleton
 public class UiHandler extends Handler implements MsgDefine {
     @Inject
-    private IAction       action;
+    private IAction action;
 
     public void handleMessage(Message msg) {
+        Bundle data;
+        int id;
         String name;
         String path;
+        int collection;
 
         switch (msg.what) {
         case ADDBOOK:
-            name = msg.getData().getString("name");
-            path = msg.getData().getString("path");
-            action.AddBook(name, path);
+            data = msg.getData();
+            name = data.getString("Name");
+            path = data.getString("Path");
+            collection = data.getInt("Collection");
+            action.AddBook(name, path, collection);
             break;
         case DELBOOK:
-            int id = msg.getData().getInt("Id");
+            id = msg.getData().getInt("Id");
             action.DelBook(id);
             break;
         case UPDATEBOOKLIST:
@@ -35,7 +41,9 @@ public class UiHandler extends Handler implements MsgDefine {
             action.AddCollection(name);
             break;
         case DELCOLLECTION:
-            action.DelCollection();
+            data = msg.getData();
+            id = data.getInt("Id");
+            action.DelCollection(id);
             break;
         case UPDATECOLLECTIONLIST:
             action.UpdateCollectionList();

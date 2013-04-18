@@ -12,7 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class RSSShowItem extends Activity{
+public class RssShowItem extends Activity{
     
     @InjectView(R.id.txt_content)
 	private TextView txtContent;
