@@ -21,8 +21,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="org.aftx.holers.android.xreader.ui.activity.ReadActivity" >
@@ -41,6 +40,16 @@
         </activity>
         <activity android:name=".ui.activity.SearchActivity" >
         </activity>
+        <service android:name=".service.DbService">
+            <intent-filter>
+                <action android:name="org.aftx.holers.android.xreader.intent.action.DBSERVICE_ACTION"/>
+            </intent-filter>
+        </service>
+        <service android:name=".service.LogicService">
+            <intent-filter>
+                <action android:name="org.aftx.holers.android.xreader.intent.action.LOGSERVICE_ACTION"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

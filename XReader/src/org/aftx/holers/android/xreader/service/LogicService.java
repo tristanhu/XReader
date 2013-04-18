@@ -5,6 +5,7 @@ import org.aftx.holers.android.xreader.service.binder.DbBinder;
 import org.aftx.holers.android.xreader.service.binder.GetDbBinder;
 import org.aftx.holers.android.xreader.service.binder.GetLogBinder;
 import org.aftx.holers.android.xreader.service.conn.SvrConn;
+import org.aftx.holers.android.xreader.service.fake.DbLayer;
 
 import android.app.Service;
 import android.content.Intent;
@@ -23,6 +24,9 @@ public class LogicService extends Service implements Action {
     @Inject
     @GetLogBinder
     private IBinder          binder;
+    
+    @Inject
+    private DbLayer          dbLayer;
     
     public ServiceConnection conn     = null;
 
