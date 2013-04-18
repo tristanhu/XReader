@@ -1,12 +1,24 @@
 package org.aftx.holers.android.xreader.ui.activity.base;
 
+import java.util.List;
+
+import org.aftx.holers.android.xreader.R;
+import org.aftx.holers.android.xreader.db.model.Collection;
 import org.aftx.holers.android.xreader.service.binder.LogBinder;
 import org.aftx.holers.android.xreader.service.fake.LogLayer;
+import org.aftx.holers.android.xreader.ui.fragment.BaseListFragment;
+import org.aftx.holers.android.xreader.ui.fragment.BookListFragment;
+import org.aftx.holers.android.xreader.ui.fragment.HistoryListFragment;
 import org.aftx.holers.android.xreader.ui.handler.MsgDefine;
+import org.aftx.holers.android.xreader.ui.utils.BaseList;
+import org.aftx.holers.android.xreader.ui.utils.BookList;
+import org.aftx.holers.android.xreader.ui.utils.CollectionList;
+import org.aftx.holers.android.xreader.ui.utils.HistoryList;
 
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ArrayAdapter;
 
 import com.google.inject.Inject;
 
@@ -29,7 +41,7 @@ public class BaseMainActivity extends BaseActivity implements
 
     @Inject
     @GetHandler
-    public Handler handler;
+    public Handler              handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +71,47 @@ public class BaseMainActivity extends BaseActivity implements
                 .getSelectedNavigationIndex());
     }
 
+    public void UpdateBookList() {
+        BaseListFragment ft;
+
+        Collection coll = ((CollectionList) collectionList).GetEntity(actionBar
+                .getSelectedNavigationIndex());
+
+        if (coll != null) {
+            ((BookList) bookList).Update(coll.getId());
+            ft = new BookListFragment();
+            ft.setList((BaseList<?>) bookList);
+            getFragmentManager().beginTransaction().replace(R.id.container, ft)
+                    .commit();
+        } else {
+            ((HistoryList) historyList).Update();
+            ft = new HistoryListFragment();
+            ft.setList((BaseList<?>) historyList);
+            getFragmentManager().beginTransaction().replace(R.id.container, ft)
+                    .commit();
+        }
+    }
+
+    public void UpdateCollectionList() {
+        collectionList.Update();
+        List<String> data = collectionList.GetData();
+        data.add(getString(R.string.title_history));
+
+        actionBar.setListNavigationCallbacks(
+                new ArrayAdapter<String>(actionBar.getThemedContext(),
+                        android.R.layout.simple_list_item_1,
+                        android.R.id.text1, data), this);
+    }
+
     @Override
     public boolean onNavigationItemSelected(int position, long id) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                handler.sendEmptyMessage(UPDATEBOOKLIST);
-            }
-        }).start();
+        UpdateBookList();
+        // new Thread(new Runnable() {
+        // @Override
+        // public void run() {
+        // handler.sendEmptyMessage(UPDATEBOOKLIST);
+        // }
+        // }).start();
         return true;
     }
 }
